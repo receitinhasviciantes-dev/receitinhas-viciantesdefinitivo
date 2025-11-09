@@ -1,0 +1,19 @@
+
+{{ define "main" }}
+  {{ partial "header.html" . }}
+  <main style="max-width:900px;margin:18px auto;padding:0 12px;">
+    <article>
+      <h1>{{ .Title }}</h1>
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <img src="{{ (index .Params.images 0) | relURL }}" alt="{{ .Title }}" style="width:320px;height:220px;object-fit:cover;border-radius:8px;">
+        <div>
+          <p style="color:#777;">{{ .Params.time }} • {{ .Params.rendimento }} • {{ .Params.dificuldade }}</p>
+          <h3>Ingredientes</h3>
+          {{ .Content }}
+        </div>
+      </div>
+    </article>
+  </main>
+  {{ partial "footer.html" . }}
+{{ end }}
+{{ template "main" . }}

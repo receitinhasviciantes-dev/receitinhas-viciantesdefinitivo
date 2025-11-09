@@ -1,0 +1,34 @@
+
+baseURL = "https://receitinhasviciantes.com/"
+languageCode = "pt-br"
+title = "Receitinhas Viciantes"
+theme = "receitinhas-theme"
+defaultContentLanguage = "pt-br"
+
+[params]
+  author = "Receitinhas Viciantes"
+  description = "Receitas práticas, econômicas e irresistíveis."
+  mainColor = "#d35400"  # laranja
+  accentColor = "#f7e6d6"  # creme
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Início"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "receitas"
+    name = "Receitas"
+    url = "/receitas/"
+    weight = 2
+  [[menu.main]]
+    identifier = "sobre"
+    name = "Sobre"
+    url = "/sobre/"
+    weight = 3
+  [[menu.main]]
+    identifier = "contato"
+    name = "Contato"
+    url = "/contato/"
+    weight = 4

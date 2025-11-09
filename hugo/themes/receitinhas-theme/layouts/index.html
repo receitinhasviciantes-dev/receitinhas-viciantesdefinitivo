@@ -1,0 +1,35 @@
+
+{{ define "main" }}
+  {{ partial "header.html" . }}
+  <main style="max-width:1000px;margin:18px auto;padding:0 12px;">
+    <section style="display:flex;gap:18px;align-items:center;">
+      <img src="{{ "img/cover.png" | relURL }}" alt="Receitinhas Viciantes" style="width:180px;border-radius:12px;">
+      <div>
+        <h2>{{ .Site.Title }}</h2>
+        <p>{{ .Site.Params.description }}</p>
+        <a href="/ebook" style="display:inline-block;padding:10px 14px;background:{{ .Site.Params.mainColor }};color:white;border-radius:8px;text-decoration:none;">Baixar eBook grátis</a>
+      </div>
+    </section>
+
+    <h3 style="margin-top:24px;">Receitas em destaque</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+      {{ range first 6 (where .Site.Pages "Section" "receitas") }}
+        <article style="border:1px solid #eee;padding:12px;border-radius:8px;">
+          <a href="{{ .RelPermalink }}"><img src="{{ (index .Params.images 0) | relURL }}" alt="{{ .Title }}" style="width:100%;height:140px;object-fit:cover;border-radius:6px;"></a>
+          <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+          <div style="color:#777;font-size:13px;">{{ .Params.time }} • {{ .Params.dificuldade }}</div>
+        </article>
+      {{ end }}
+    </div>
+
+    <h3 style="margin-top:24px;">Últimas receitas</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+      {{ range first 9 (where .Site.Pages "Section" "receitas") }}
+        <div><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+      {{ end }}
+    </div>
+
+  </main>
+  {{ partial "footer.html" . }}
+{{ end }}
+{{ template "main" . }}
